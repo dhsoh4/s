@@ -335,7 +335,6 @@ export default function GlassStylePage() {
   const [ipInfo, setIpInfo] = useState({ ip: '...', country: 'US' });
   const [isInitialized, setIsInitialized] = useState(false);
   const [isImmersive, setIsImmersive] = useState(false);
-  const [bgLoaded, setBgLoaded] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [inboxStatus, setInboxStatus] = useState<'idle' | 'opening'>('idle');
   const [showMenu, setShowMenu] = useState(false);
@@ -453,18 +452,7 @@ export default function GlassStylePage() {
       
       {/* 免费提示弹窗 */}
       <FreeNoticeModal />
-      
-      {/* 背景层 */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#312e81]">
-        <img 
-          src="https://loliapi.com/acg/" 
-          alt="background" 
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
-          loading="eager"
-          onLoad={() => setBgLoaded(true)}
-        />
-      </div>
-      
+
       {/* 沉浸模式恢复层 */}
       {isImmersive && (
         <div 
